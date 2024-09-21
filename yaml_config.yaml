@@ -1,0 +1,24 @@
+data_ingestion:
+  source: "EURUSD"   # The currency pair (or source name)
+  start_date: "2023-01-01"
+  end_date: "2023-01-10"
+  
+preprocessing:
+  nan_handling: "ffill"   # Use forward fill for NaN handling
+
+feature_engineering:
+  moving_average_window: 3   # Window size for the moving average (MA3)
+
+model:
+  type: "last_known_value"  # The model to use: in this case, it uses last known value for prediction
+  drift_threshold: 0.01    # Threshold for drift detection
+
+evaluation:
+  metrics: ["error"]   # Which metrics to evaluate
+
+deployment:
+  save_model: false     # Whether to save the model for future use
+
+drift_detection:
+  enabled: true
+  drift_threshold: 0.01  # Threshold for drift detection (e.g., 0.01)
